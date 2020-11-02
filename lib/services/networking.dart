@@ -19,7 +19,13 @@ Future searchBooks(String searchText) async {
         Book book = Book();
         book.title = item['title'];
         book.author = item['authors'][0];
-        book.imgUrl = item['imageLinks']['thumbnail'];
+        print(book.title);
+        if (item['imageLinks'] == null) {
+          book.imgUrl =
+              'https://islandpress.org/sites/default/files/default_book_cover_2015.jpg';
+        } else {
+          book.imgUrl = item['imageLinks']['thumbnail'];
+        }
         book.publishDate = item['publishedDate'];
         print(book);
         books.add(book);
